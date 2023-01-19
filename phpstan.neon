@@ -24,3 +24,19 @@ parameters:
             message: "#^PHPDoc tag @param for parameter \\$userManager contains unresolvable type\\.$#"
             count: 1
             path: tests/cases/integration/presenters/SignPresenterTest.php
+
+        -
+            message: """
+                #^Instantiation of deprecated class Nette\\\\Configurator\\:
+                use Nette\\\\Bootstrap\\\\Configurator$#
+            """
+            count: 1
+            path: tests/src/AppConfiguratorFactory.php
+
+        -
+            message: """
+                #^Return type of method AppTests\\\\AppConfiguratorFactory\\:\\:create\\(\\) has typehint with deprecated class Nette\\\\Configurator\\:
+                use Nette\\\\Bootstrap\\\\Configurator$#
+            """
+            count: 1
+            path: tests/src/AppConfiguratorFactory.php

@@ -2,7 +2,7 @@
 
 namespace AppTests;
 
-use Nette\Bootstrap\Configurator;
+use Nette\Configurator;
 use Nette\DI\Container;
 use Nette\DI\Definitions\Statement;
 use Webnazakazku\MangoTester\DatabaseCreator\DatabaseCreator;

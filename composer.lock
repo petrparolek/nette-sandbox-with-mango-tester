@@ -766,22 +766,22 @@
         },
         {
             "name": "nette/forms",
-            "version": "v3.1.9",
+            "version": "v3.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/forms.git",
-                "reference": "1f93a00346e53a8dbf74c21b413038ce70052738"
+                "reference": "12b4c12e9d65a4c97e10a37cee88fdd14db780b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/forms/zipball/1f93a00346e53a8dbf74c21b413038ce70052738",
-                "reference": "1f93a00346e53a8dbf74c21b413038ce70052738",
+                "url": "https://api.github.com/repos/nette/forms/zipball/12b4c12e9d65a4c97e10a37cee88fdd14db780b7",
+                "reference": "12b4c12e9d65a4c97e10a37cee88fdd14db780b7",
                 "shasum": ""
             },
             "require": {
                 "nette/component-model": "^3.0",
                 "nette/http": "^3.1",
-                "nette/utils": "^3.2.1 || ~4.0.0",
+                "nette/utils": "^3.2.5 || ~4.0.0",
                 "php": ">=7.2 <8.3"
             },
             "conflict": {
@@ -834,9 +834,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/forms/issues",
-                "source": "https://github.com/nette/forms/tree/v3.1.9"
+                "source": "https://github.com/nette/forms/tree/v3.1.10"
             },
-            "time": "2023-01-09T20:18:22+00:00"
+            "time": "2023-01-19T14:37:56+00:00"
         },
         {
             "name": "nette/http",
@@ -1455,16 +1455,16 @@
         },
         {
             "name": "nette/utils",
-            "version": "v4.0.0-RC2",
+            "version": "v4.0.0-RC3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/utils.git",
-                "reference": "27251ce4ba81589f9e918a3a28c79940388068d4"
+                "reference": "13c877ad611f172f0cae71587da0f8da31b5fae2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/utils/zipball/27251ce4ba81589f9e918a3a28c79940388068d4",
-                "reference": "27251ce4ba81589f9e918a3a28c79940388068d4",
+                "url": "https://api.github.com/repos/nette/utils/zipball/13c877ad611f172f0cae71587da0f8da31b5fae2",
+                "reference": "13c877ad611f172f0cae71587da0f8da31b5fae2",
                 "shasum": ""
             },
             "require": {
@@ -1536,9 +1536,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/utils/issues",
-                "source": "https://github.com/nette/utils/tree/v4.0.0-RC2"
+                "source": "https://github.com/nette/utils/tree/v4.0.0-RC3"
             },
-            "time": "2023-01-18T03:44:50+00:00"
+            "time": "2023-01-19T14:15:09+00:00"
         },
         {
             "name": "nextras/migrations",
@@ -3230,7 +3230,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/petrparolek/mango-presenter-tester",
-                "reference": "d5208f9f4c375c66b1b061f57f6feb23fbf6ebba"
+                "reference": "dc541f557fb64cf4fede5e1f60c993b4077220db"
             },
             "require": {
                 "nette/application": "~3.0",
