@@ -8,6 +8,12 @@ includes:
 parameters:
     level: 8
 
+    tmpDir: temp/phpstan
+
+    fileExtensions:
+        - php
+        - phpt
+
     ignoreErrors:
         -
             message: "#^Call to an undefined method App\\\\Model\\\\UserManager\\:\\:shouldReceive\\(\\)\\.$#"

@@ -9,19 +9,23 @@ final class SignPresenter extends BasePresenter
 {
 
 	/** @var string @persistent */
-	public $backlink = '';
+	public string $backlink = '';
 
-	/** @var Forms\SignInFormFactory */
-	private $signInFactory;
+	private Forms\SignInFormFactory $signInFactory;
 
-	/** @var Forms\SignUpFormFactory */
-	private $signUpFactory;
+	private Forms\SignUpFormFactory $signUpFactory;
 
 	public function __construct(Forms\SignInFormFactory $signInFactory, Forms\SignUpFormFactory $signUpFactory)
 	{
 		parent::__construct();
+
 		$this->signInFactory = $signInFactory;
 		$this->signUpFactory = $signUpFactory;
+	}
+
+	public function actionOut(): void
+	{
+		$this->getUser()->logout();
 	}
 
 	/**
@@ -43,11 +47,6 @@ final class SignPresenter extends BasePresenter
 		return $this->signUpFactory->create(function (): void {
 			$this->redirect('Homepage:');
 		});
-	}
-
-	public function actionOut(): void
-	{
-		$this->getUser()->logout();
 	}
 
 }

@@ -14,26 +14,41 @@
 			"homepage": "https://nette.org/contributors"
 		}
 	],
+	"repositories": [
+		{
+			"type": "git",
+			"url": "https://github.com/petrparolek/contributte-di"
+		},
+		{
+			"type": "git",
+			"url": "https://github.com/petrparolek/mango-presenter-tester"
+		},
+		{
+			"type": "git",
+			"url": "https://github.com/petrparolek/nextras-migrations"
+		}
+	],
 	"require": {
-		"php": ">=7.2",
+		"php": ">=8.0",
 		"nette/application": "~3.1.0",
-		"nette/bootstrap": "~3.1.0",
-		"nette/caching": "~3.1.0",
-		"nette/database": "~3.1.0",
-		"nette/di": "~3.0.5",
-		"nette/finder": "^2.5",
+		"nette/bootstrap": "~3.2.0",
+		"nette/caching": "~3.2.0",
+		"nette/database": "~4.0.0",
+		"nette/di": "~3.1.0",
+		"nette/finder": "^3.0",
 		"nette/forms": "~3.1.0",
-		"nette/http": "~3.1.0",
-		"nette/mail": "^3.0",
-		"nette/robot-loader": "^3.0",
-		"nette/safe-stream": "^2.4",
-		"nette/security": "~3.1.0",
-		"nette/utils": "^3.0",
-		"latte/latte": "^2.5",
+		"nette/http": "~3.2.0",
+		"nette/mail": "^4.0",
+		"nette/robot-loader": "^4.0",
+		"nette/safe-stream": "^3.0",
+		"nette/security": "~4.0.0",
+		"nette/utils": "^4.0",
+		"latte/latte": "^3.0",
 		"tracy/tracy": "~2.9.0",
 		"dg/adminer-custom": "^1.8",
-		"contributte/console": "^0.9.0",
-		"nextras/migrations": "^3.1"
+		"contributte/console": "0.10.x-dev",
+		"contributte/di": "dev-nette-4 as 0.5.4",
+		"nextras/migrations": "dev-nette-4"
 	},
 	"require-dev": {
 		"nette/tester": "~2.4.0",
@@ -43,10 +58,10 @@
 		"phpstan/phpstan-mockery": "^1.0",
 		"phpstan/phpstan-nette": "^1.0",
 		"phpstan/phpstan-strict-rules": "^1.0",
-		"ninjify/qa": "^0.13",
+		"contributte/qa": "^0.3",
 		"mockery/mockery": "^1.0",
 		"webnazakazku/mango-tester-http-mocks": "^0.4",
-		"webnazakazku/mango-presenter-tester": "^0.4",
+		"webnazakazku/mango-presenter-tester": "dev-nette-4",
 		"webnazakazku/mango-tester-database-creator": "^0.4",
 		"webnazakazku/mango-tester-infrastructure": "^0.6",
 		"dg/bypass-finals": "^1.3"
@@ -56,10 +71,9 @@
 			"App\\": "app"
 		}
 	},
-	"minimum-stability": "stable",
-	"scripts": {
-		"phpstan": "phpstan analyse"
-	},
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"preferred-install": "source",
 	"config": {
 		"allow-plugins": {
 			"dealerdirect/phpcodesniffer-composer-installer": true

@@ -2,7 +2,7 @@
 
 namespace AppTests;
 
-use Nette\Configurator;
+use Nette\Bootstrap\Configurator;
 use Nette\DI\Container;
 use Nette\DI\Definitions\Statement;
 use Webnazakazku\MangoTester\DatabaseCreator\DatabaseCreator;
@@ -11,8 +11,7 @@ use Webnazakazku\MangoTester\Infrastructure\Container\IAppConfiguratorFactory;
 class AppConfiguratorFactory implements IAppConfiguratorFactory
 {
 
-	/** @var DatabaseCreator */
-	private $databaseCreator;
+	private DatabaseCreator $databaseCreator;
 
 	public function __construct(DatabaseCreator $databaseCreator)
 	{

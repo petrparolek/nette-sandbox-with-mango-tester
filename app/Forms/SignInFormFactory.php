@@ -12,18 +12,15 @@ final class SignInFormFactory
 
 	use Nette\SmartObject;
 
-	/** @var FormFactory */
-	private $factory;
+	private FormFactory $factory;
 
-	/** @var User */
-	private $user;
+	private User $user;
 
 	public function __construct(FormFactory $factory, User $user)
 	{
 		$this->factory = $factory;
 		$this->user = $user;
 	}
-
 
 	public function create(callable $onSuccess): Form
 	{
@@ -44,6 +41,7 @@ final class SignInFormFactory
 				$this->user->login($values->username, $values->password);
 			} catch (Nette\Security\AuthenticationException $e) {
 				$form->addError('The username or password you entered is incorrect.');
+
 				return;
 			}
 

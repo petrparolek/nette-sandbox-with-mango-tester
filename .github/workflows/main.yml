@@ -1,8 +1,76 @@
 name: Tests
 on: [push, pull_request]
 jobs:
+  cs:
+    name: (PHPCS ${{ matrix.php-versions }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php-versions: ['8.0']
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup PHP, with composer and extensions
+        uses: shivammathur/setup-php@v2 #https://github.com/shivammathur/setup-php
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, mysql
+          coverage: xdebug #optional
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - name: Cache composer dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          # Use composer.json for key, if composer.lock is not committed.
+          # key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+      - name: Install Composer dependencies
+        run: composer install --no-progress --prefer-dist --optimize-autoloader
+      - name: Run CS
+        run: make cs
+
+  phpstan:
+    name: (PHPStan ${{ matrix.php-versions }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php-versions: [ '8.0' ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup PHP, with composer and extensions
+        uses: shivammathur/setup-php@v2 #https://github.com/shivammathur/setup-php
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, mysql
+          coverage: xdebug #optional
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - name: Cache composer dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          # Use composer.json for key, if composer.lock is not committed.
+          # key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+      - name: Install Composer dependencies
+        run: composer install --no-progress --prefer-dist --optimize-autoloader
+      - name: Prepare configuration files
+        run: |
+          cp app/config/local.ci.neon app/config/local.neon
+          cp tests/config/tests.local.ci.neon tests/config/tests.local.neon
+      - name: Run PHPStan
+        run: make phpstan
+
   tests:
-    name: (PHP ${{ matrix.php-versions }})
+    name: (Tests ${{ matrix.php-versions }})
     runs-on: ubuntu-latest
     services:
       mysql:
@@ -16,7 +84,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php-versions: ['7.3', '7.4', '8.0', '8.1']
+        php-versions: [ '8.0' ]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -47,9 +115,5 @@ jobs:
           cp tests/config/tests.local.ci.neon tests/config/tests.local.neon
       - name: Run Migrations
         run: php bin/console migrations:continue
-      - name: Run CS
-        run: vendor/bin/codesniffer app tests
       - name: Run PHPStan
-        run: vendor/bin/phpstan analyse app -c phpstan.neon
-      - name: Run Tests
-        run: vendor/bin/tester -C tests
+        run: make tests
